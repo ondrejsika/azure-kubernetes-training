@@ -7,10 +7,11 @@ install:
 	helm install \
 		cert-manager \
 		--namespace ingress-basic \
-		--version v0.16.1 \
 		--set installCRDs=true \
 		--set nodeSelector."beta\.kubernetes\.io/os"=linux \
 		jetstack/cert-manager
+
+apply-issuers:
 	kubectl apply -n ingress-basic -f issuer-prod.yml -f issuer-staging.yml
 
 uninstall:
