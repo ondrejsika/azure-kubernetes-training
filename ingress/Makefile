@@ -8,7 +8,7 @@ endif
 ifndef DNS_LABEL
 	$(error DNS_LABEL is undefined)
 endif
-	helm install nginx-ingress ingress-nginx/ingress-nginx \
+	helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
 		--namespace ingress-basic --create-namespace \
 		--set controller.replicaCount=2 \
 		--set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
